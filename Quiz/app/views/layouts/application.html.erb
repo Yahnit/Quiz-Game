@@ -36,6 +36,7 @@
 </div>
 </header>
 
+<div id="main_content">
     <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
     <% end %>
@@ -43,6 +44,9 @@
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
 
+    <div id="content" class="col-md-5 center-block">
     <%= yield %>
+  </div>
+</div>
   </body>
 </html>
