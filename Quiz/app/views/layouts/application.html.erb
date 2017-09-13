@@ -20,9 +20,9 @@
   <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
  </ul>
  <% if current_user.admin == true  %>
-  <h1>Hello Admin!</h1>
+  <h1 style="text-align:center">Hello Admin!</h1>
  <% else %>
-  <h1>Hello Quizzer!</h1>
+  <h1 style="text-align:center">Hello Quizzer!</h1>
  <% end %>
 <% else %>
   <ul class="nav navbar-nav pull-right">
