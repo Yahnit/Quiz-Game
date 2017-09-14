@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :choices
+  resources :questions
+  resources :subgenres
+  resources :genres
   get 'welcome/index'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
