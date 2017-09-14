@@ -16,14 +16,15 @@
             <nav class="collapse navbar-collapse navbar-ex1-collapse">
 <% if user_signed_in? %>
 <ul class="nav navbar-nav navbar-right">
+  <% if current_user.admin == true  %>
+  <li><%= link_to 'Hi Admin', edit_user_registration_path, :class => 'navbar-link' %> </li>
+   <% else %>
+   <li><%= link_to 'Hi Quizzer', edit_user_registration_path, :class => 'navbar-link' %> </li>
+   <% end %>
   <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> </li>
   <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
  </ul>
- <% if current_user.admin == true  %>
-  <h1 style="text-align:center">Hello Admin!</h1>
- <% else %>
-  <h1 style="text-align:center">Hello Quizzer!</h1>
- <% end %>
+
 <% else %>
   <ul class="nav navbar-nav pull-right">
   <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> </li>
