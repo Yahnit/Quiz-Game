@@ -3,6 +3,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th>S.No</th>
       <th style="text-aling:center">Option</th>
       <th>Question</th>
       <th>Correct</th>
@@ -14,6 +15,7 @@
   <tbody>
     <% @choices.each do |choice| %>
       <tr>
+        <td><strong><%= choice.id %></strong></td>
         <td><strong><%= choice.option_desc %></strong></td>
         <td><strong><%= choice.question_id %></strong></td>
         <td><%= choice.correct %></td>

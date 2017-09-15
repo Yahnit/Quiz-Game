@@ -3,6 +3,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th>S.No</th>
       <th>Name</th>
       <th style="text-aling:center">Description</th>
       <th> Genre Id</th>
@@ -13,6 +14,7 @@
   <tbody>
     <% @subgenres.each do |subgenre| %>
       <tr>
+        <td><strong><%= subgenre.id %></strong></td>
         <td><strong><%= subgenre.name %></strong></td>
         <td><small><%= subgenre.description %></small></td>
         <td><%= subgenre.genre_id %></td>

@@ -3,6 +3,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th>S.No</th>
       <th style="text-align:center">Question</th>
       <th>Sub Genre Id</th>
       <th>Multiple Choice?</th>
@@ -14,6 +15,7 @@
   <tbody>
     <% @questions.each do |question| %>
       <tr>
+        <td><%= question.id %></td>
         <td><strong><%= question.question_desc %></strong></td>
         <td><%= question.sub_genre_id %></td>
         <td><%= question.is_multiple %></td>

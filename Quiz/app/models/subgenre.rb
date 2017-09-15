@@ -1,4 +1,4 @@
 class Subgenre < ApplicationRecord
-  belongs_to :genre
-  has_many :questions
+# belongs_to :genre
+#  has_many :questions
 end

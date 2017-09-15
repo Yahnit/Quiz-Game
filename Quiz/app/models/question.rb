@@ -1,4 +1,4 @@
 class Question < ApplicationRecord
-  belongs_to :subgenre
-  has_many :choices
+#  belongs_to :subgenre
+#  has_many :choices
 end
