@@ -1,0 +1,22 @@
+<%= simple_form_for(@question) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-group">
+    <%= f.label :Question %><br>
+    <%= f.text_field :question_desc, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :SubGenre %><br>
+    <%= f.text_field :sub_genre_id, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :MultipleCorrect? %><br>
+    <%= f.text_field :is_multiple, class: "form-control" %>
+  </div>
+
+  <br>
+  <div class="form-group">
+    <%= f.submit "Submit", class: "btn btn-lg btn-primary" %>
+  </div>
+
+<% end %>

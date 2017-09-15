@@ -1,0 +1,10 @@
+<div class="page-header">
+<h1> <%= @subgenre.name%></h1>
+<h3><%= @subgenre.genre_id %></h3>
+<h5><%= @subgenre.description %></h5>
+
+</div>
+
+
+<%= link_to 'Edit', edit_subgenre_path(@subgenre) %> |
+<%= link_to 'Back', subgenres_path %>

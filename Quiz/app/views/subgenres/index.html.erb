@@ -1,0 +1,29 @@
+<h1>Sub Genres</h1>
+<div class="table-responsive">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>S.No</th>
+      <th>Name</th>
+      <th style="text-aling:center">Description</th>
+      <th> Genre Id</th>
+      <th colspan="6"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @subgenres.each do |subgenre| %>
+      <tr>
+        <td><strong><%= subgenre.id %></strong></td>
+        <td><strong><%= subgenre.name %></strong></td>
+        <td><small><%= subgenre.description %></small></td>
+        <td><%= subgenre.genre_id %></td>
+        <td><%= link_to 'Edit', edit_subgenre_path(subgenre) %></td>
+        <td><%= link_to 'Delete', subgenre, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+<%= link_to 'New Sub Genre', new_subgenre_path %>
