@@ -1,25 +1,30 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Questions</h1>
-
-<table>
+<div class="table-responsive">
+<table class="table table-striped">
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th style="text-align:center">Question</th>
+      <th>Sub Genre Id</th>
+      <th>Multiple Choice?</th>
+
+      <th colspan="6"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @questions.each do |question| %>
       <tr>
-        <td><%= link_to 'Show', question %></td>
+        <td><strong><%= question.question_desc %></strong></td>
+        <td><%= question.sub_genre_id %></td>
+        <td><%= question.is_multiple %></td>
         <td><%= link_to 'Edit', edit_question_path(question) %></td>
-        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+</div>
 <br>
+
 
 <%= link_to 'New Question', new_question_path %>

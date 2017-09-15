@@ -69,6 +69,6 @@ class SubgenresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subgenre_params
-      params.fetch(:subgenre, {})
+      params.require(:subgenre).permit(:name, :description, :genre_id)
     end
 end

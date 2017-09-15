@@ -1,10 +1,21 @@
 <%= simple_form_for(@choice) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
+  <div class="form-group">
+    <%= f.label :Option %><br>
+    <%= f.text_field :option_desc, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :Question %><br>
+    <%= f.text_field :question_id, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :Correct? %><br>
+    <%= f.text_field :correct, class: "form-control" %>
+  </div>
+  <br>
+  <div class="form-group">
+    <%= f.submit "Submit", class: "btn btn-lg btn-primary" %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
 <% end %>

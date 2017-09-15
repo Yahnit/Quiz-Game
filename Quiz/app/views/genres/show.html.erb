@@ -1,4 +1,11 @@
-<p id="notice"><%= notice %></p>
+
+<div class="page-header">
+<h1> <%= @genre.name%></h1>
+</div>
+
+<h5 class="comments_title">
+  <%= @genre.description %>
+</h5>
 
 <%= link_to 'Edit', edit_genre_path(@genre) %> |
 <%= link_to 'Back', genres_path %>

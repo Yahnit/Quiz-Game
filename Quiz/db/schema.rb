@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20170914160003) do
   create_table "choices", force: :cascade do |t|
     t.string "option_desc"
     t.integer "question_id"
-    t.boolean "correct"
+    t.boolean "correct", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20170914160003) do
   create_table "questions", force: :cascade do |t|
     t.string "question_desc"
     t.integer "sub_genre_id"
-    t.boolean "is_multiple"
+    t.boolean "is_multiple", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
