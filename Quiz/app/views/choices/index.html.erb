@@ -19,7 +19,6 @@
         <td><strong><%= choice.option_desc %></strong></td>
         <td><strong><%= choice.question_id %></strong></td>
         <td><%= choice.correct %></td>
-
         <td><%= link_to 'Edit', edit_choice_path(choice) %></td>
         <td><%= link_to 'Delete', choice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
