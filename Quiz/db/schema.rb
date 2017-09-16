@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20170915152614) do
     t.boolean "correct", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_choices_on_question_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -31,8 +32,10 @@ ActiveRecord::Schema.define(version: 20170915152614) do
     t.string "question_desc"
     t.integer "sub_genre_id"
     t.boolean "is_multiple", default: false
+    t.integer "subgenre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["subgenre_id"], name: "index_questions_on_subgenre_id"
   end
 
   create_table "subgenres", force: :cascade do |t|
@@ -41,6 +44,7 @@ ActiveRecord::Schema.define(version: 20170915152614) do
     t.integer "genre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_subgenres_on_genre_id"
   end
 
   create_table "users", force: :cascade do |t|
