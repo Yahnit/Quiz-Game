@@ -1,5 +1,5 @@
 <h2>Create a SubGenre</h2>
-<%=
+<%
     @genre = Genre.find(params[:genre_id])
     genre_id = @genre.id
     action = "http://localhost:3000/genres/" + genre_id.to_s + "/subgenres"
