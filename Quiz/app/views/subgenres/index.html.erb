@@ -18,13 +18,17 @@
         <td><strong><%= subgenre.name %></strong></td>
         <td><small><%= subgenre.description %></small></td>
         <td><%= subgenre.genre_id %></td>
-        <td><%= link_to 'Show', subgenre %></td>
+        <td><%= link_to 'Start Quiz', questions_link_path(subgenre.id) %></td>
+        <% if current_user.admin %>
         <td><%= link_to 'Edit', edit_subgenre_path(subgenre) %></td>
         <td><%= link_to 'Delete', subgenre, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>
 </table>
 </div>
 <br>
+<% if current_user.admin %>
 <%= link_to 'New Sub Genre', new_subgenre_link_path %>
+<% end %>

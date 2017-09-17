@@ -1,33 +1,70 @@
+<style>
+hidden {
+    display: none;
+}
+</style>
 <h1>Questions</h1>
-<div class="table-responsive">
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>S.No</th>
-      <th style="text-align:center">Question</th>
-      <th>Sub Genre Id</th>
-      <th>Multiple Choice?</th>
+<% score = Leaderboard.find_by(user_id: current_user.id, subgenre_id: @questions[0].subgenre_id) %>
+<% if score == nil %>
+  <h2> Score : 0</h2>
+<% else %>
+<h2> Score : <%= score.score %> </h2>
+  <% end %>
 
-      <th colspan="6"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+    <% i = 0 %>
     <% @questions.each do |question| %>
+    <% i = i+1 %>
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-20">
+            <table class="table table-condensed table-hover">
+    <%= form_tag({controller: "questions" , action: "check"}, method: "post") do %>
+    <p class="hidden"><%= text_field_tag(:qid,question.id,{:readonly => true}) %></p>
+
       <tr>
-        <td><%= question.id %></td>
-        <td><strong><%= question.question_desc %></strong></td>
-        <td><%= question.subgenre_id %></td>
-        <td><%= question.is_multiple %></td>
-        <td><%= link_to 'Show', question %></td>
-        <td><%= link_to 'Edit', edit_question_path(question) %></td>
-        <td><%= link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <tr class="danger"><h3><%= i.to_s + ' . ' + question.question_desc %></h3></tr>
+        <tr class="danger">
       </tr>
+      <% @choices = question.choices.all %>
+        <tr class="danger">
+          <td><%= check_box_tag(:opa) %></td>
+          <td><h5><%=' 1. ' + @choices[0].option_desc %></h5s></td>
+        </tr>
+        <tr class="danger">
+          <td><%= check_box_tag(:opb) %></td>
+          <td><h5><%= ' 2. ' + @choices[1].option_desc %></h5s></td>
+        </tr>
+        <tr class="danger">
+          <td><%= check_box_tag(:opc)%></td>
+          <td><h5><%=' 3. ' + @choices[2].option_desc %></h5s></td>
+        </tr>
+        <tr class="danger">
+          <td><%= check_box_tag(:opd) %></td>
+          <td><h5><%=' 4. ' + @choices[3].option_desc %></h5s></td>
+        </tr>
+
+      </tr>
+    </td>
+    </tr>
+    <br>
+    </table>
+    <%= submit_tag("submit") %>
+    <br/>
+    <% if current_user.admin %>
+      <td><%= link_to 'Show', question %></td>
+      <td><%= link_to 'Edit', edit_question_path(question) %></td>
+      <td><%= link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <% end %>
-  </tbody>
-</table>
-</div>
+
+    </div>
+    </div>
+    </div>
+    <br/><br/>
+    <% end %>
+
 <br>
+<% end %>
 
-
+<% if current_user.admin %>
 <%= link_to 'New Question', new_question_link_path %>
+<% end %>

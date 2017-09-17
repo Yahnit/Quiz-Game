@@ -10,9 +10,9 @@
     <%= f.text_field :question_id, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :Correct? %><br>
-    <%= f.text_field :correct, class: "form-control" %>
-  </div>
+    <%= f.input :correct, as: :radio_buttons, label: 'CorrectAnswer?', class: "form-control" %>
+  </div
+
   <br>
   <div class="form-group">
     <%= f.submit "Submit", class: "btn btn-lg btn-primary" %>

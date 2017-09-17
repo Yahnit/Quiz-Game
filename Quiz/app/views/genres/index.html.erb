@@ -17,13 +17,17 @@
         <td><strong><%= genre.id %></strong></td>
         <td><strong><%= genre.name %></strong></td>
         <td><small><%= genre.description %></small></td>
-        <td><%= link_to 'Show', genre %></td>
-        <td><%= link_to 'Edit', edit_genre_path(genre) %></td>
-        <td><%= link_to 'Delete', genre, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'SubGenres', subgenres_link_path(genre.id) %></td>
+        <% if current_user.admin %>
+          <td><%= link_to 'Edit', edit_genre_path(genre) %></td>
+          <td><%= link_to 'Delete', genre, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 </div>
 <br>
+<% if current_user.admin %>
 <%= link_to 'New Genre', new_genre_path %>
+<% end %>

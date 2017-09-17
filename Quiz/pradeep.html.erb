@@ -1,0 +1,78 @@
+<p id="notice"><%= notice %></p>
+<% c_user = current_user %>
+<% if @scor  != nil %>
+    <h1 class="text-center">Your score in this quiz is <%= @scor.score %> </h1>
+<% end %>
+<h1 class="text-center">Questions</h1>
+
+
+
+    <% @questions.each do |question| %>
+        <% flag = 0 %>
+        <% @userans.each do |us| %>
+            <% if us.question_id == question.id %>
+                <% flag = 1 %>
+            <% end %>
+        <% end %>
+        <% if flag == 0 %>
+            <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-condensed table-hover">
+            <%= form_tag({controller: "questions" , action: "check"}, method: "post") do %>
+                <p6 ><%= text_field_tag(:qid,question.id,{:readonly => true}) %></p6>
+                <tr class="danger"><h3><%= question.ques %></h3></tr>
+                <tr class="danger">
+                <td><%= check_box_tag(:opa) %></td>
+                <td><%= label_tag(:opa , question.opa,:class => "checkbox inline") %></td>
+                </tr>
+                <tr class="danger">
+                <td><%= check_box_tag(:opb) %></td>
+                <td><%= label_tag(:opb , question.opb,:class => "checkbox inline") %></td>
+                </tr>
+                <tr class="danger">
+                <td>
+                <%= check_box_tag(:opc) %></td>
+                <td>
+                <%= label_tag(:opc , question.opc , :class => "checkbox inline") %>
+                </td></tr><tr class="danger"><td>
+                <%= check_box_tag(:opd) %></td><td>
+                <%= label_tag(:opd , question.opd , :class => "checkbox inline") %>
+            </td>
+            </tr>
+            <br>
+            </table>
+            <%= submit_tag("submit") %>
+            </div>
+            </div>
+            </div>
+            <% end %>
+        <% end %>
+        <% if c_user.id == 1 %>
+            <% if flag == 1 %>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-condensed table-hover">
+                <tr class="danger"><td>Question: <%= question.ques %></td></td></tr>
+                <tr class="danger"><td>OptionA: <%= question.opa %></td></tr>
+                <tr class="danger"><td>OptonB: <%= question.opb %></td></tr>
+                <tr class="danger"><td>OptoinC: <%= question.opc %></td></tr>
+                <tr class="danger"><td>OptionD: <%= question.opd %></td></tr>
+                </table>
+                </div>
+                </div>
+                </div>
+            <% end %>
+            <h3 class="text-center"><%= link_to 'Show', question %></h3>
+            <h3 class="text-center"><%= link_to 'Edit', edit_question_path(question) %></h3>
+            <h3 class="text-center"><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></h3>
+        <% end %>
+        <br>
+    <% end %>
+
+
+<br>
+<% if c_user.id == 1 %>
+    <h3 class="text-center"><%= link_to 'New Question', new_question_path %> </h3>
+<% end %>

@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
-
+  skip_before_action :verify_authenticity_token
   # GET /questions
   # GET /questions.json
 
@@ -14,6 +14,60 @@ class QuestionsController < ApplicationController
     @questions = Question.all
   end
 
+  def check
+    set_subgenre
+    q = Question.find_by(id: params[:qid])
+    @choices = q.choices.all
+    flag = 1
+    if params[:opa] != nil
+      if !@choices[0].correct
+        flag = 0
+        puts('First option is wrong')
+      end
+    end
+
+    if params[:opb] != nil
+      if !@choices[1].correct
+        flag = 0
+        puts('2 option is wrong')
+      end
+    end
+
+    if params[:opc] != nil
+      if !@choices[2].correct
+        flag = 0
+        puts('3 option is wrong')
+      end
+    end
+
+    if params[:opd] != nil
+      if !@choices[3].correct
+        flag = 0
+        puts('4 option is wrong')
+      end
+    end
+
+    puts(flag)
+
+    Status.create(user_id: current_user.id, subgenre_id: @subgenre.id, question_id: qid)
+
+    temp = Leaderboard.find_by(user_id: current_user.id, subgenre_id: @subgenre.id)
+    if temp == nil
+      puts('row in leaderboard created')
+      Leaderboard.create(user_id: current_user.id, subgenre_id: @subgenre.id, score: 0)
+    else
+      if flag == 1
+        scre = temp.score + 4
+        temp.update(score: scre)
+        puts('Yeay! score increased')
+      end
+
+    redirect_to :action => 'index'
+    end
+
+
+
+  end
   # GET /questions/1
   # GET /questions/1.json
   def show

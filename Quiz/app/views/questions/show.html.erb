@@ -1,9 +1,14 @@
 <div class="page-header">
-<h4> <%= @question.question_desc%></h4>
+
+<% if @question.is_multiple %>
+      <h3>Multiple Correct Question</h3>
+    <% else %>
+    <h3>Single Correct Question</h3>
+    <% end %>
+    <br/><br/>
+<h4> <%= @question.sub_genre_id.to_s + ' ) ' + @question.question_desc%></h4>
 </div>
 
-<h4><%= @question.sub_genre_id %></h4>
-<h5><%= @question.is_multiple %></h5>
 
 <%= link_to 'Choices', choices_link_path(@question.id) %> |
 <%= link_to 'Edit', edit_question_path(@question) %> |

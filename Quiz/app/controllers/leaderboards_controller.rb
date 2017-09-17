@@ -69,6 +69,6 @@ class LeaderboardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def leaderboard_params
-      params.fetch(:leaderboard, {})
+      params.require(:leaderboard).permit(:subgenre_id, :user_id, :score)
     end
 end

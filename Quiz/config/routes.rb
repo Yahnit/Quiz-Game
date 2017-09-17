@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   get 'subgenres', to: 'subgenres#all', as: 'all_subgenres'
   get 'subgenres/:subgenre_id/questions/new', to: 'questions#new_question', as: 'new_question_link'
   get 'subgenres/:subgenre_id/questions', to: 'questions#index', as: 'questions_link'
-  post 'subgenres/:subgenre_id/questions', to: 'questions#create', as: 'questions_link_create'
-
+  post 'subgenres/:subgenre_id/question', to: 'questions#create', as: 'questions_link_create'
+  post 'subgenres/:subgenre_id/questions', to: 'questions#check', as: 'check_right_answer'
 
   get 'questions', to: 'questions#all', as: 'all_questions'
   get 'questions/:question_id/choices/new', to: 'choices#new_choice', as: 'new_choice_link'

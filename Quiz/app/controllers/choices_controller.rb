@@ -1,5 +1,6 @@
 class ChoicesController < ApplicationController
   before_action :set_choice, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
 
   # GET /choices
   # GET /choices.json
