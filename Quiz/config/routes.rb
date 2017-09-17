@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'subgenres/:subgenre_id/questions', to: 'questions#index', as: 'questions_link'
   post 'subgenres/:subgenre_id/question', to: 'questions#create', as: 'questions_link_create'
   post 'subgenres/:subgenre_id/questions', to: 'questions#check', as: 'check_right_answer'
+  get 'subgenres/:subgenre_id/leaderboards', to: 'leaderboards#index', as: 'leaderboards'
+
 
   get 'questions', to: 'questions#all', as: 'all_questions'
   get 'questions/:question_id/choices/new', to: 'choices#new_choice', as: 'new_choice_link'

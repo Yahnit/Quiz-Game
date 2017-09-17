@@ -37,6 +37,7 @@ class ChoicesController < ApplicationController
     set_question
     @choice = Choice.new(choice_params)
     @choice.question_id = @question.id
+    @choice.save
 
     respond_to do |format|
       if @choice.save

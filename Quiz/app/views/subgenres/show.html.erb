@@ -4,7 +4,7 @@
 <h5><%= @subgenre.description %></h5>
 
 </div>
-
+<%= link_to 'Leaderboard', leaderboards_path(@subgenre.id) %> |
 <%= link_to 'Questions', questions_link_path(@subgenre.id) %> |
 <%= link_to 'Edit', edit_subgenre_path(@subgenre) %> |
 <%= link_to 'Back', subgenres_path %>

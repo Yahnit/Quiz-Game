@@ -11,6 +11,7 @@ hidden {
 <h2> Score : <%= score.score %> </h2>
   <% end %>
 
+
     <% i = 0 %>
     <% @questions.each do |question| %>
     <% indicator = 0 %>
@@ -33,21 +34,24 @@ hidden {
         <tr class="danger">
       </tr>
       <% @choices = question.choices.all %>
+      <% puts('Hey') %>
+      <% puts(@choices) %>
+      <% puts('Done') %>
         <tr class="danger">
           <td><%= check_box_tag(:opa) %></td>
-          <td><h5><%=' 1. ' + @choices[0].option_desc %></h5s></td>
+          <td><h5><%=' 1. ' + @choices[0].option_desc %></h5></td>
         </tr>
         <tr class="danger">
           <td><%= check_box_tag(:opb) %></td>
-          <td><h5><%= ' 2. ' + @choices[1].option_desc %></h5s></td>
+          <td><h5><%= ' 2. ' + @choices[1].option_desc %></h5></td>
         </tr>
         <tr class="danger">
           <td><%= check_box_tag(:opc)%></td>
-          <td><h5><%=' 3. ' + @choices[2].option_desc %></h5s></td>
+          <td><h5><%=' 3. ' + @choices[2].option_desc %></h5></td>
         </tr>
         <tr class="danger">
           <td><%= check_box_tag(:opd) %></td>
-          <td><h5><%=' 4. ' + @choices[3].option_desc %></h5s></td>
+          <td><h5><%=' 4. ' + @choices[3].option_desc %></h5></td>
         </tr>
 
       </tr>

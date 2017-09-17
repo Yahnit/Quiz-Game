@@ -4,7 +4,11 @@ class LeaderboardsController < ApplicationController
   # GET /leaderboards
   # GET /leaderboards.json
   def index
-    @leaderboards = Leaderboard.all
+    set_subgenre
+    @leaderboards  = Leaderboard.where(subgenre_id: @subgenre.id)
+    puts('Start')
+  #  puts(@leaderboards.count)
+    puts('End')
   end
 
   # GET /leaderboards/1
@@ -65,6 +69,10 @@ class LeaderboardsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_leaderboard
       @leaderboard = Leaderboard.find(params[:id])
+    end
+
+    def set_subgenre
+      @subgenre = Subgenre.find(params[:subgenre_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

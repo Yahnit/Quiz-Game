@@ -22,28 +22,24 @@ class QuestionsController < ApplicationController
     if params[:opa] != nil
       if !@choices[0].correct
         flag = 0
-        puts('First option is wrong')
       end
     end
 
     if params[:opb] != nil
       if !@choices[1].correct
         flag = 0
-        puts('2 option is wrong')
       end
     end
 
     if params[:opc] != nil
       if !@choices[2].correct
         flag = 0
-        puts('3 option is wrong')
       end
     end
 
     if params[:opd] != nil
       if !@choices[3].correct
         flag = 0
-        puts('4 option is wrong')
       end
     end
 
@@ -53,7 +49,6 @@ class QuestionsController < ApplicationController
 
     temp = Leaderboard.find_by(user_id: current_user.id, subgenre_id: @subgenre.id)
     if temp == nil
-      puts('row in leaderboard created')
       Leaderboard.create(user_id: current_user.id, subgenre_id: @subgenre.id, score: 0)
     else
       if flag == 1
@@ -61,7 +56,7 @@ class QuestionsController < ApplicationController
         temp.update(score: scre)
         puts('Yeay! score increased')
       end
-
+    temp.save
     redirect_to :action => 'index'
     end
 
@@ -92,6 +87,7 @@ class QuestionsController < ApplicationController
     set_subgenre
     @question = Question.new(question_params)
     @question.subgenre_id = @subgenre.id
+    @question.save
 
     respond_to do |format|
       if @question.save

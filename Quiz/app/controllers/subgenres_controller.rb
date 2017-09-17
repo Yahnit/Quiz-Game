@@ -42,6 +42,7 @@ class SubgenresController < ApplicationController
     set_genre
     @subgenre = Subgenre.new(subgenre_params)
     @subgenre.genre_id = @genre.id
+    @subgenre.save
 
     respond_to do |format|
       if @subgenre.save
