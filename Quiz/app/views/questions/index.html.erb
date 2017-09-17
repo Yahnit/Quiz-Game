@@ -3,7 +3,7 @@ hidden {
     display: none;
 }
 </style>
-<h1>Questions</h1>
+<h1>Lets Quizzie</h1>
 <% score = Leaderboard.find_by(user_id: current_user.id, subgenre_id: @questions[0].subgenre_id) %>
 <% if score == nil %>
   <h2> Score : 0</h2>
@@ -13,6 +13,13 @@ hidden {
 
     <% i = 0 %>
     <% @questions.each do |question| %>
+    <% indicator = 0 %>
+    <% stats = Status.find_by(user_id: current_user.id, subgenre_id: question.subgenre_id, question_id: question.id) %>
+    <% if stats != nil
+      indicator = 1
+    end
+     %>
+     <% if indicator == 0 %>
     <% i = i+1 %>
     <div class="container-fluid">
     <div class="row">
@@ -61,7 +68,7 @@ hidden {
     </div>
     <br/><br/>
     <% end %>
-
+<% end %>
 <br>
 <% end %>
 

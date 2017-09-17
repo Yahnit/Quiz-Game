@@ -49,7 +49,7 @@ class QuestionsController < ApplicationController
 
     puts(flag)
 
-    Status.create(user_id: current_user.id, subgenre_id: @subgenre.id, question_id: qid)
+    Status.create(user_id: current_user.id, subgenre_id: @subgenre.id, question_id: params[:qid])
 
     temp = Leaderboard.find_by(user_id: current_user.id, subgenre_id: @subgenre.id)
     if temp == nil
