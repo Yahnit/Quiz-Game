@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170915152614) do
+ActiveRecord::Schema.define(version: 20170916135816) do
 
   create_table "choices", force: :cascade do |t|
     t.string "option_desc"
@@ -28,6 +28,18 @@ ActiveRecord::Schema.define(version: 20170915152614) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "leaderboards", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "subgenre_id"
+    t.integer "genre_id"
+    t.integer "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_leaderboards_on_genre_id"
+    t.index ["subgenre_id"], name: "index_leaderboards_on_subgenre_id"
+    t.index ["user_id"], name: "index_leaderboards_on_user_id"
+  end
+
   create_table "questions", force: :cascade do |t|
     t.string "question_desc"
     t.integer "sub_genre_id"
@@ -36,6 +48,17 @@ ActiveRecord::Schema.define(version: 20170915152614) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["subgenre_id"], name: "index_questions_on_subgenre_id"
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "subgenre_id"
+    t.integer "question_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_statuses_on_question_id"
+    t.index ["subgenre_id"], name: "index_statuses_on_subgenre_id"
+    t.index ["user_id"], name: "index_statuses_on_user_id"
   end
 
   create_table "subgenres", force: :cascade do |t|

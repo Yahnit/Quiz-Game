@@ -17,7 +17,7 @@
       <tr>
         <td><%= question.id %></td>
         <td><strong><%= question.question_desc %></strong></td>
-        <td><%= question.subgenre_id %></td>
+        <td><%= question.sub_genre_id %></td>
         <td><%= question.is_multiple %></td>
         <td><%= link_to 'Show', question %></td>
         <td><%= link_to 'Edit', edit_question_path(question) %></td>
@@ -28,6 +28,3 @@
 </table>
 </div>
 <br>
-
-
-<%= link_to 'New Question', new_question_path %>

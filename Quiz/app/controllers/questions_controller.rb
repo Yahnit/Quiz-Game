@@ -3,13 +3,24 @@ class QuestionsController < ApplicationController
 
   # GET /questions
   # GET /questions.json
+
+
   def index
+    set_subgenre
+    @questions = @subgenre.questions.all
+  end
+
+  def all
     @questions = Question.all
   end
 
   # GET /questions/1
   # GET /questions/1.json
   def show
+  end
+
+  def new_question
+    @question = Question.new
   end
 
   # GET /questions/new
@@ -24,7 +35,9 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
+    set_subgenre
     @question = Question.new(question_params)
+    @question.subgenre_id = @subgenre.id
 
     respond_to do |format|
       if @question.save
@@ -66,9 +79,12 @@ class QuestionsController < ApplicationController
     def set_question
       @question = Question.find(params[:id])
     end
+    def set_subgenre
+      @subgenre = Subgenre.find(params[:subgenre_id])
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:question_desc, :sub_genre_id)
+      params.require(:question).permit(:question_desc, :is_multiple)
     end
 end

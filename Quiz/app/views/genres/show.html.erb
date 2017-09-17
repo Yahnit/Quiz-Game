@@ -5,6 +5,6 @@
 <h5 class="comments_title">
   <%= @genre.description %>
 </h5>
-
+<%= link_to 'SubGenres', subgenres_link_path(@genre.id) %> |
 <%= link_to 'Edit', edit_genre_path(@genre) %> |
 <%= link_to 'Back', genres_path %>

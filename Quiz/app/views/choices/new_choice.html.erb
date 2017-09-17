@@ -1,0 +1,29 @@
+<h2>Create a Choice</h2>
+
+<%
+    @question = Question.find(params[:question_id])
+    question_id = @question.id
+    action = "http://localhost:3000/questions/" + question_id.to_s + "/choices"
+ %>
+
+ <form method="POST" action= <%= action %> >
+
+<%= simple_form_for(@choice) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-group">
+    <%= f.label :Option %><br>
+    <%= f.text_field :option_desc, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :Correct? %><br>
+    <%= f.text_field :correct, class: "form-control" %>
+  </div>
+  <br>
+  <div class="form-group">
+    <%= f.submit "Submit", class: "btn btn-lg btn-primary" %>
+  </div>
+
+<% end %>
+</form>

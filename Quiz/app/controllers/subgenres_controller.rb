@@ -3,7 +3,14 @@ class SubgenresController < ApplicationController
 
   # GET /subgenres
   # GET /subgenres.json
+
+
   def index
+    set_genre
+    @subgenres = @genre.subgenres.all
+  end
+
+  def all
     @subgenres = Subgenre.all
   end
 
@@ -12,10 +19,17 @@ class SubgenresController < ApplicationController
   def show
   end
 
+  def new_subgenre
+    @subgenre = Subgenre.new
+  end
+
   # GET /subgenres/new
   def new
     @subgenre = Subgenre.new
   end
+
+
+
 
   # GET /subgenres/1/edit
   def edit
@@ -24,7 +38,9 @@ class SubgenresController < ApplicationController
   # POST /subgenres
   # POST /subgenres.json
   def create
+    set_genre
     @subgenre = Subgenre.new(subgenre_params)
+    @subgenre.genre_id = @genre.id
 
     respond_to do |format|
       if @subgenre.save
@@ -65,6 +81,9 @@ class SubgenresController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_subgenre
       @subgenre = Subgenre.find(params[:id])
+    end
+    def set_genre
+        @genre = Genre.find(params[:genre_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

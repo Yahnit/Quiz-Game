@@ -3,13 +3,22 @@ class ChoicesController < ApplicationController
 
   # GET /choices
   # GET /choices.json
+
   def index
-    @choices = Choice.all
+    set_question
+    @choices = @question.choices.all
   end
 
+  def all
+    @choices = Choice.all
+  end
   # GET /choices/1
   # GET /choices/1.json
   def show
+  end
+
+  def new_choice
+    @choice = Choice.new
   end
 
   # GET /choices/new
@@ -24,7 +33,9 @@ class ChoicesController < ApplicationController
   # POST /choices
   # POST /choices.json
   def create
+    set_question
     @choice = Choice.new(choice_params)
+    @choice.question_id = @question.id
 
     respond_to do |format|
       if @choice.save
@@ -67,8 +78,12 @@ class ChoicesController < ApplicationController
       @choice = Choice.find(params[:id])
     end
 
+    def set_question
+      @question = Question.find(params[:question_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def choice_params
-      params.require(:choice).permit(:option_desc, :question_id, :correct)
+      params.require(:choice).permit(:option_desc, :correct)
     end
 end
