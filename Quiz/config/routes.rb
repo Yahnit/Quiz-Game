@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get 'questions/:question_id/choices/new', to: 'choices#new_choice', as: 'new_choice_link'
   get 'questions/:question_id/choices', to: 'choices#index', as: 'choices_link'
   post 'questions/:question_id/choices', to: 'choices#create', as: 'choices_link_create'
+  post 'subgenres/:subgenre_id/check_answer', to: 'questions#check', as: 'check_answer'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'choices', to: 'choices#all', as: 'all_choices'
 

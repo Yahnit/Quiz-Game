@@ -49,8 +49,8 @@ class QuestionsController < ApplicationController
 
     temp = Leaderboard.find_by(user_id: current_user.id, subgenre_id: @subgenre.id)
     if temp == nil
-      Leaderboard.create(user_id: current_user.id, subgenre_id: @subgenre.id, score: 0)
-    else
+      temp = Leaderboard.create(user_id: current_user.id, subgenre_id: @subgenre.id, score: 0)
+    end
       if flag == 1
         scre = temp.score + 4
         temp.update(score: scre)
@@ -59,10 +59,6 @@ class QuestionsController < ApplicationController
     temp.save
     redirect_to :action => 'index'
     end
-
-
-
-  end
   # GET /questions/1
   # GET /questions/1.json
   def show

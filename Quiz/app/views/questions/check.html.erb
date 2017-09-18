@@ -2,6 +2,12 @@
 hidden {
     display: none;
 }
+
+<%
+    @subgenre = Subgenre.find(params[:subgenre_id])
+    @questions = @subgenre.questions.all
+ %>
+
 </style>
 <h1>Lets Quizzie</h1>
 <% score = Leaderboard.find_by(user_id: current_user.id, subgenre_id: @questions[0].subgenre_id) %>
