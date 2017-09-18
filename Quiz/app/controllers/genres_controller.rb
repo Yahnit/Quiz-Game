@@ -25,7 +25,7 @@ class GenresController < ApplicationController
   # POST /genres
   # POST /genres.json
   def create
-
+    if current_user.admin
     @genre = Genre.new(genre_params)
 
     respond_to do |format|
@@ -38,7 +38,7 @@ class GenresController < ApplicationController
       end
     end
   end
-
+end
   # PATCH/PUT /genres/1
   # PATCH/PUT /genres/1.json
   def update

@@ -34,6 +34,7 @@ class ChoicesController < ApplicationController
   # POST /choices
   # POST /choices.json
   def create
+    if current_user.admin
     set_question
     @choice = Choice.new(choice_params)
     @choice.question_id = @question.id
@@ -49,7 +50,7 @@ class ChoicesController < ApplicationController
       end
     end
   end
-
+end
   # PATCH/PUT /choices/1
   # PATCH/PUT /choices/1.json
   def update

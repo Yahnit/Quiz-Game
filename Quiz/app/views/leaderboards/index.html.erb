@@ -15,9 +15,11 @@
   </thead>
 
   <tbody>
+    <% i = 0 %>
     <% @leaderboards.each do |leaderboard| %>
+      <% i = i+1 %>
       <tr>
-        <td><%= leaderboard.id %></td>
+        <td><%= i.to_s %></td>
         <td><strong><%= User.find_by(id: leaderboard.user_id).email %></strong></td>
         <td><%= leaderboard.score %></td>
 

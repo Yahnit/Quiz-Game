@@ -34,8 +34,13 @@ hidden {
     <p class="hidden"><%= text_field_tag(:qid,question.id,{:readonly => true}) %></p>
 
       <tr>
-        <tr class="danger"><h3><%= i.to_s + ' . ' + question.question_desc %></h3></tr>
+        <tr class="danger"><h4><%= i.to_s + ' . ' + question.question_desc %></h4></tr>
         <tr class="danger">
+          <% if question.is_multiple%>
+          <strong>Multiple Correct Question</strong>
+          <% else %>
+          <strong>Single Correct Question</strong>
+          <% end %>
       </tr>
       <% @choices = question.choices.all %>
 

@@ -39,6 +39,7 @@ class SubgenresController < ApplicationController
   # POST /subgenres
   # POST /subgenres.json
   def create
+    if current_user.admin
     set_genre
     @subgenre = Subgenre.new(subgenre_params)
     @subgenre.genre_id = @genre.id
@@ -54,7 +55,7 @@ class SubgenresController < ApplicationController
       end
     end
   end
-
+end
   # PATCH/PUT /subgenres/1
   # PATCH/PUT /subgenres/1.json
   def update

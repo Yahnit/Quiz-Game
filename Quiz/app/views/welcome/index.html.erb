@@ -2,29 +2,40 @@
 <h4 style="text-align:center">Try Quizzie then! </h4>
 
 <% if user_signed_in? %>
-<h1>Genres</h1>
 <div class="table-responsive">
 <table class="table table-striped">
   <thead>
     <tr>
       <th>S.No</th>
-      <th>Name</th>
-      <th style="text-aling:center">Description</th>
+      <th>Genre</th>
+      <th>Subgenre</th>
+      <th>Status</th>
 
       <th colspan="6"></th>
     </tr>
   </thead>
-
+  <% i = 0 %>
   <tbody>
-    <% Genre.all.each do |genre| %>
+    <% Subgenre.all.each do |subgenre| %>
       <tr>
-        <td><strong><%= genre.id %></strong></td>
-        <td><strong><%= genre.name %></strong></td>
-        <td><small><%= genre.description %></small></td>
-        <td><%= link_to 'SubGenres', subgenres_link_path(genre.id) %></td>
+        <% i = i+1 %>
+        <td><strong><%= i.to_s %></strong></td>
+        <td><strong><%= Genre.find_by(id: subgenre.genre_id).name %></strong></td>
+        <td><small><%= subgenre.name %></small></td>
+
+        <% if Status.find_by(subgenre_id: subgenre.id, user_id: current_user.id) == nil %>
+        <td><small>Not Attempted</small></td>
+        <td><%= link_to 'Start Quiz', questions_link_path(subgenre.id) %></td>
+        <% else %>
+        <td><small>Attempted</small></td>
+        <td><%= link_to 'Continue Quiz', questions_link_path(subgenre.id) %></td>
+        <% end %>
+        <td><%= link_to 'Leaderboard', leaderboards_path(subgenre.id) %></td>
+
+
         <% if current_user.admin %>
-        <td><%= link_to 'Edit', edit_genre_path(genre) %></td>
-        <td><%= link_to 'Delete', genre, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_subgenre_path(subgenre) %></td>
+        <td><%= link_to 'Delete', subgenre, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>

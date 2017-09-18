@@ -18,7 +18,16 @@
         <td><strong><%= subgenre.name %></strong></td>
         <td><small><%= subgenre.description %></small></td>
         <td><%= subgenre.genre_id %></td>
+
+        <% if Status.find_by(subgenre_id: subgenre.id, user_id: current_user.id) == nil %>
         <td><%= link_to 'Start Quiz', questions_link_path(subgenre.id) %></td>
+        <% else %>
+        <td><%= link_to 'Continue Quiz', questions_link_path(subgenre.id) %></td>
+        <% end %>
+
+        <td><%= link_to 'Leaderboard', leaderboards_path(subgenre.id) %></td>
+
+
         <% if current_user.admin %>
         <td><%= link_to 'Edit', edit_subgenre_path(subgenre) %></td>
         <td><%= link_to 'Delete', subgenre, method: :delete, data: { confirm: 'Are you sure?' } %></td>
