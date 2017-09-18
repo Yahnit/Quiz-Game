@@ -6,11 +6,10 @@ hidden {
 <h1>Lets Quizzie</h1>
 <% score = Leaderboard.find_by(user_id: current_user.id, subgenre_id: @questions[0].subgenre_id) %>
 <% if score == nil %>
-  <h2> Score : 0</h2>
+  <h2>Your Score : 0</h2>
 <% else %>
-<h2> Score : <%= score.score %> </h2>
+<h2>Your Score : <%= score.score %> </h2>
   <% end %>
-
 
     <% i = 0 %>
     <% @questions.each do |question| %>
@@ -36,7 +35,7 @@ hidden {
       <tr>
         <tr class="danger"><h4><%= i.to_s + ' . ' + question.question_desc %></h4></tr>
         <tr class="danger">
-          <br/>
+          <br>
           <% if question.is_multiple%>
           <strong>Multiple Correct Question</strong>
           <% else %>
@@ -45,19 +44,19 @@ hidden {
       </tr>
       <% @choices = question.choices.all %>
 
-        <tr class="danger">
+        <tr class="info">
           <td><%= check_box_tag(:opa) %></td>
           <td><h5><%=' 1. ' + @choices[0].option_desc %></h5></td>
         </tr>
-        <tr class="danger">
+        <tr class="info">
           <td><%= check_box_tag(:opb) %></td>
           <td><h5><%= ' 2. ' + @choices[1].option_desc %></h5></td>
         </tr>
-        <tr class="danger">
+        <tr class="info">
           <td><%= check_box_tag(:opc)%></td>
           <td><h5><%=' 3. ' + @choices[2].option_desc %></h5></td>
         </tr>
-        <tr class="danger">
+        <tr class="info">
           <td><%= check_box_tag(:opd) %></td>
           <td><h5><%=' 4. ' + @choices[3].option_desc %></h5></td>
         </tr>
@@ -81,10 +80,75 @@ hidden {
     </div>
     </div>
     <br/><br/>
+<% end %>
+<br>
+<% end %>
+
+<% @questions.each do |question| %>
+<% indicator = 0 %>
+<% stats = Status.find_by(user_id: current_user.id, subgenre_id: question.subgenre_id, question_id: question.id) %>
+<% if stats != nil
+  indicator = 1
+end
+ %>
+ <% if indicator == 1 %>
+ <% i = i+1 %>
+<div class="container-fluid">
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-condensed table-hover">
+<h3><%= i.to_s + ' . '+ question.question_desc %></h3>
+<tr class="danger">
+  <% if question.is_multiple%>
+  <strong>Multiple Correct Question</strong>
+  <% else %>
+  <strong>Single Correct Question</strong>
+  <% end %>
+  <br/>
+  <small>You already answered this question</small>
+
+</tr>
+<% if question.choices[0].correct %>
+  <tr class="success"><td>A: <%= question.choices[0].option_desc %></td></tr>
+<% else %>
+<tr class="danger"><td>A: <%= question.choices[0].option_desc %></td></tr>
+<% end %>
+
+<% if question.choices[1].correct %>
+  <tr class="success"><td>B: <%= question.choices[1].option_desc %></td></tr>
+<% else %>
+<tr class="danger"><td>B: <%= question.choices[1].option_desc %></td></tr>
+<% end %>
+
+<% if question.choices[2].correct %>
+  <tr class="success"><td>C: <%= question.choices[2].option_desc %></td></tr>
+<% else %>
+<tr class="danger"><td>C: <%= question.choices[2].option_desc %></td></tr>
+<% end %>
+
+<% if question.choices[3].correct %>
+  <tr class="success"><td>D: <%= question.choices[3].option_desc %></td></tr>
+<% else %>
+<tr class="danger"><td>D: <%= question.choices[3].option_desc %></td></tr>
+<% end %>
+
+</table>
+
+<% if current_user.admin %>
+<td><%= link_to 'Show', question %></td>
+<td><%= link_to 'Edit', edit_question_path(question) %></td>
+<td><%= link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<% end %>
+</div>
+</div>
+</div>
+
 
 <% end %>
 <br>
 <% end %>
+
+
 
 <% if current_user.admin %>
 <%= link_to 'New Question', new_question_link_path %>

@@ -52,7 +52,7 @@ class QuestionsController < ApplicationController
       temp = Leaderboard.create(user_id: current_user.id, subgenre_id: @subgenre.id, score: 0)
     end
       if flag == 1
-        scre = temp.score + 4
+        scre = temp.score + 10
         temp.update(score: scre)
         puts('Yeay! score increased')
       end
