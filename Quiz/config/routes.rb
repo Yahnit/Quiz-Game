@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root to: "welcome#index"
 
   get 'genres/:genre_id/subgenres/new', to: 'subgenres#new_subgenre', as: 'new_subgenre_link'

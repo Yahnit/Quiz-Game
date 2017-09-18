@@ -15,7 +15,7 @@ class GenresController < ApplicationController
 
   # GET /genres/new
   def new
-    @genre = Genre.new
+      @genre = Genre.new
   end
 
   # GET /genres/1/edit
@@ -25,6 +25,7 @@ class GenresController < ApplicationController
   # POST /genres
   # POST /genres.json
   def create
+
     @genre = Genre.new(genre_params)
 
     respond_to do |format|
