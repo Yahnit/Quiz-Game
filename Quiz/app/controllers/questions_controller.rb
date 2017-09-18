@@ -16,7 +16,7 @@ class QuestionsController < ApplicationController
 
   def check
     set_subgenre
-    q = Question.find_by(id: params[:qid])
+    q =  Question.find_by(id: params[:qid])
     @choices = q.choices.all
     flag = 1
     if params[:opa] != nil

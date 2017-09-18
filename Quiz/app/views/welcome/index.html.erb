@@ -1,15 +1,16 @@
 <h3 style="text-align:center">Wanna Get Quizzed!!??</h3>
-<h4 style="text-align:center">Try Quizzie then! </h4>
 
 <% if user_signed_in? %>
 <div class="table-responsive">
-<table class="table table-striped">
+<table width="500" class="table table-hover" >
   <thead>
-    <tr>
+    <tr class="info">
       <th>S.No</th>
       <th>Genre</th>
       <th>Subgenre</th>
       <th>Status</th>
+      <th>Quiz</th>
+      <th>Leaderboards</th>
 
       <th colspan="6"></th>
     </tr>
@@ -20,18 +21,17 @@
       <tr>
         <% i = i+1 %>
         <td><strong><%= i.to_s %></strong></td>
-        <td><strong><%= Genre.find_by(id: subgenre.genre_id).name %></strong></td>
-        <td><small><%= subgenre.name %></small></td>
+        <td><strong><%=link_to Genre.find_by(id: subgenre.genre_id).name, Genre.find_by(id: subgenre.genre_id) %></strong></td>
+        <td><strong><%=link_to subgenre.name, subgenre %></strong></td>
 
         <% if Status.find_by(subgenre_id: subgenre.id, user_id: current_user.id) == nil %>
         <td><small>Not Attempted</small></td>
-        <td><%= link_to 'Start Quiz', questions_link_path(subgenre.id) %></td>
+        <td><%= link_to '<button class="btn btn-success btn-xs" type="button">Start Quiz</button>'.html_safe, questions_link_path(subgenre.id) %></td>
         <% else %>
         <td><small>Attempted</small></td>
-        <td><%= link_to 'Continue Quiz', questions_link_path(subgenre.id) %></td>
+        <td><%= link_to '<button class="btn btn-info btn-xs" type="button">Continue Quiz</button>'.html_safe, questions_link_path(subgenre.id) %></td>
         <% end %>
-        <td><%= link_to 'Leaderboard', leaderboards_path(subgenre.id) %></td>
-
+        <td><%= link_to '<button class="btn btn-warning btn-xs" type="button">Leaderboard</button>'.html_safe, leaderboards_path(subgenre.id) %></td>
 
         <% if current_user.admin %>
         <td><%= link_to 'Edit', edit_subgenre_path(subgenre) %></td>
