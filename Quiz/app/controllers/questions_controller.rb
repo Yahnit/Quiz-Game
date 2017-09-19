@@ -71,7 +71,7 @@ class QuestionsController < ApplicationController
 
     temp = Leaderboard.find_by(user_id: current_user.id, subgenre_id: @subgenre.id)
     if temp == nil
-      temp = Leaderboard.create(user_id: current_user.id, subgenre_id: @subgenre.id, score: 0)
+      temp = Leaderboard.create(user_id: current_user.id, subgenre_id: @subgenre.id, score: 0, genre_id: @subgenre.genre_id)
     end
       if flag == 1
         frus = Lifeline.find_by(user_id: current_user.id, question_id: q.id)

@@ -106,9 +106,10 @@ hidden {
     <br>
     </table>
 
-    <%= submit_tag("submit") %>
-    <% if Lifeline.find_by(user_id: current_user.id, question_id: question.id).used == false%>
-    <%= submit_tag("Lifeline") %>
+
+    <%= submit_tag "Submit", :class => "btn btn-success" %>
+    <% if Lifeline.find_by(user_id: current_user.id, question_id: question.id).used == false && question.is_multiple == false %>
+    <%= submit_tag "Lifeline", :class => "btn btn-warning" %>
     <% end%>
   </form>
     <br/>
