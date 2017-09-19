@@ -54,6 +54,7 @@ end
   # PATCH/PUT /choices/1
   # PATCH/PUT /choices/1.json
   def update
+    if current_user.admin
     respond_to do |format|
       if @choice.update(choice_params)
         format.html { redirect_to @choice, notice: 'Choice was successfully updated.' }
@@ -64,17 +65,18 @@ end
       end
     end
   end
-
+end
   # DELETE /choices/1
   # DELETE /choices/1.json
   def destroy
+    if current_user.admin
     @choice.destroy
     respond_to do |format|
       format.html { redirect_to choices_url, notice: 'Choice was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
-
+end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_choice

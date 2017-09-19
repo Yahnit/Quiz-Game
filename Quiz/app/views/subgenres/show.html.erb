@@ -4,7 +4,12 @@
 <h5><%= @subgenre.description %></h5>
 
 </div>
-<%= link_to 'Leaderboard', leaderboards_path(@subgenre.id) %> |
-<%= link_to 'Questions', questions_link_path(@subgenre.id) %> |
-<%= link_to 'Edit', edit_subgenre_path(@subgenre) %> |
-<%= link_to 'Back', subgenres_path %>
+<%= link_to '<button class="btn btn-success btn-xs" type="button">Leaderboard</button>'.html_safe, leaderboards_path(@subgenre.id) %>
+<br/><br/>
+<%= link_to '<button class="btn btn-info btn-xs" type="button">Questions</button>'.html_safe, questions_link_path(@subgenre.id) %>
+<br/><br/>
+
+<%= link_to '<button class="btn btn-danger btn-xs" type="button">Edit</button>'.html_safe, edit_subgenre_path(@subgenre) %>
+<br/><br/>
+
+<%= link_to 'Back', '/' %>

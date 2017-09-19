@@ -42,6 +42,7 @@ end
   # PATCH/PUT /genres/1
   # PATCH/PUT /genres/1.json
   def update
+    if current_user.admin
     respond_to do |format|
       if @genre.update(genre_params)
         format.html { redirect_to @genre, notice: 'Genre was successfully updated.' }
@@ -52,17 +53,18 @@ end
       end
     end
   end
-
+end
   # DELETE /genres/1
   # DELETE /genres/1.json
   def destroy
+    if current_user.admin
     @genre.destroy
     respond_to do |format|
       format.html { redirect_to genres_url, notice: 'Genre was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
-
+end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_genre

@@ -153,3 +153,5 @@ end
 <% if current_user.admin %>
 <%= link_to 'New Question', new_question_link_path %>
 <% end %>
+
+<%= link_to '<button class="btn btn-danger btn-xs" type="button">Back</button>'.html_safe, '/' %>

@@ -59,6 +59,7 @@ end
   # PATCH/PUT /subgenres/1
   # PATCH/PUT /subgenres/1.json
   def update
+    if current_user.admin
     respond_to do |format|
       if @subgenre.update(subgenre_params)
         format.html { redirect_to @subgenre, notice: 'Subgenre was successfully updated.' }
@@ -69,17 +70,18 @@ end
       end
     end
   end
-
+end
   # DELETE /subgenres/1
   # DELETE /subgenres/1.json
   def destroy
+    if current_user.admin
     @subgenre.destroy
     respond_to do |format|
       format.html { redirect_to subgenres_url, notice: 'Subgenre was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
-
+end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_subgenre

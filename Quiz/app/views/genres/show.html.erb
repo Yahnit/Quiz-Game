@@ -5,6 +5,9 @@
 <h5 class="comments_title">
   <%= @genre.description %>
 </h5>
-<%= link_to 'SubGenres', subgenres_link_path(@genre.id) %> |
-<%= link_to 'Edit', edit_genre_path(@genre) %> |
-<%= link_to 'Back', genres_path %>
+<%= link_to '<button class="btn btn-success btn-xs" type="button">SubGenres</button>'.html_safe, subgenres_link_path(@genre.id) %>
+<br/><br/>
+<%= link_to '<button class="btn btn-info btn-xs" type="button">Edit</button>'.html_safe, edit_genre_path(@genre) %>
+<br/><br/>
+<%= link_to '<button class="btn btn-danger btn-xs" type="button">Back</button>'.html_safe, '/' %>
+<br/><br/>

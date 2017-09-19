@@ -80,6 +80,7 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
+    if current_user.admin
     set_subgenre
     @question = Question.new(question_params)
     @question.subgenre_id = @subgenre.id
@@ -95,10 +96,11 @@ class QuestionsController < ApplicationController
       end
     end
   end
-
+end
   # PATCH/PUT /questions/1
   # PATCH/PUT /questions/1.json
   def update
+    if current_user.admin
     respond_to do |format|
       if @question.update(question_params)
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }
@@ -109,17 +111,18 @@ class QuestionsController < ApplicationController
       end
     end
   end
-
+end
   # DELETE /questions/1
   # DELETE /questions/1.json
   def destroy
+    if current_user.admin
     @question.destroy
     respond_to do |format|
       format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
-
+end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_question
