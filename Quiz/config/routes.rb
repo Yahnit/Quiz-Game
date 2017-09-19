@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :lifelines
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root to: "welcome#index"
 

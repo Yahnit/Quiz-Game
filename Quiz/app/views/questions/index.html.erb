@@ -43,6 +43,12 @@ hidden {
           <% end %>
       </tr>
       <% @choices = question.choices.all %>
+      <% temp = Lifeline.find_by(question_id: question.id, user_id: current_user.id) %>
+
+      <% if temp == nil %>
+      <%  temp = Lifeline.create(question_id: question.id, user_id: current_user.id, used: false)%>
+      <% end %>
+      <% if temp.used == false %>
 
         <tr class="info">
           <td><%= check_box_tag(:opa) %></td>
@@ -61,6 +67,39 @@ hidden {
           <td><h5><%=' 4. ' + @choices[3].option_desc %></h5></td>
         </tr>
 
+        <% else %>
+          <% correct_answer = Choice.find_by(question_id: question.id, correct: true) %>
+          <% wrong_answer = Choice.find_by(question_id: question.id, correct: false) %>
+
+
+
+        <tr class="info">
+          <td><%= check_box_tag(:opa) %></td>
+          <td><h5><%=' 1. ' + wrong_answer.option_desc %></h5></td>
+        </tr>
+
+        <% if correct_answer.id % 4==1 %>
+        <tr class="info">
+          <td><%= check_box_tag(:opa) %></td>
+          <td><h5><%= ' 2. ' + correct_answer.option_desc %></h5></td>
+        </tr>
+        <% elsif correct_answer.id % 4 ==2 %>
+        <tr class="info">
+          <td><%= check_box_tag(:opb) %></td>
+          <td><h5><%= ' 2. ' + correct_answer.option_desc %></h5></td>
+        </tr>
+        <% elsif correct_answer.id % 4 ==3 %>
+        <tr class="info">
+          <td><%= check_box_tag(:opc) %></td>
+          <td><h5><%= ' 2. ' + correct_answer.option_desc %></h5></td>
+        </tr>
+        <% elsif correct_answer.id % 4 == 0 %>
+        <tr class="info">
+          <td><%= check_box_tag(:opd) %></td>
+          <td><h5><%= ' 2. ' + correct_answer.option_desc %></h5></td>
+        </tr>
+        <% end %>
+        <% end %>
       </tr>
     </td>
     </tr>
@@ -68,6 +107,9 @@ hidden {
     </table>
 
     <%= submit_tag("submit") %>
+    <% if Lifeline.find_by(user_id: current_user.id, question_id: question.id).used == false%>
+    <%= submit_tag("Lifeline") %>
+    <% end%>
   </form>
     <br/>
     <% if current_user.admin %>
@@ -106,6 +148,7 @@ end
   <% end %>
   <br/>
   <small>You already answered this question</small>
+
 
 </tr>
 <% if question.choices[0].correct %>

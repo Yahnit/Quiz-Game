@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Lifelines</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lifelines.each do |lifeline| %>
+      <tr>
+        <td><%= link_to 'Show', lifeline %></td>
+        <td><%= link_to 'Edit', edit_lifeline_path(lifeline) %></td>
+        <td><%= link_to 'Destroy', lifeline, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lifeline', new_lifeline_path %>

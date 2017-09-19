@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170916135816) do
+ActiveRecord::Schema.define(version: 20170919071242) do
 
   create_table "choices", force: :cascade do |t|
     t.string "option_desc"
@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(version: 20170916135816) do
     t.index ["genre_id"], name: "index_leaderboards_on_genre_id"
     t.index ["subgenre_id"], name: "index_leaderboards_on_subgenre_id"
     t.index ["user_id"], name: "index_leaderboards_on_user_id"
+  end
+
+  create_table "lifelines", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "question_id"
+    t.boolean "used", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "questions", force: :cascade do |t|
