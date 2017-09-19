@@ -1,0 +1,155 @@
+User.create(email: "yahnit@gmail.com", password: "iiit123")
+User.create(email: "yahnit.gogeta@gmail.com", password: "iiit123", admin: true)
+User.create(email: "user.com", password: "iiit123")
+
+Genre.create(name: "Sports", description: "Do you follow sports? Yeayy! You have come to the right place! Try our quiz and prove yourself")
+Genre.first.subgenres.create(name: "Cricket", description: "Do you follow cricket? Wanna showcase you talent? Yes, you should try our quiz then!", genre_id: 1)
+
+Subgenre.first.questions.create(question_desc: "Who was the captain of india in WC2011?", sub_genre_id: 1, is_multiple: false)
+Question.first.choices.create(option_desc: "Sachin Tendulkar", question_id: 1, correct: false)
+Question.first.choices.create(option_desc: "MS Dhoni", question_id: 1, correct: true)
+Question.first.choices.create(option_desc: "Virat Kohli", question_id: 1, correct: false)
+Question.first.choices.create(option_desc: "Rohit Sharma", question_id: 1, correct: false)
+
+Subgenre.first.questions.create(question_desc: "Who was the captain of Austalia in WC2015?", sub_genre_id: 1, is_multiple: false)
+Question.last.choices.create(option_desc: "Steven Smith", question_id: 2, correct: false)
+Question.last.choices.create(option_desc: "Ricky Ponting", question_id: 2, correct: false)
+Question.last.choices.create(option_desc: "Michael Clarke", question_id: 2, correct: true)
+Question.last.choices.create(option_desc: "George Bailey", question_id: 2, correct: false)
+
+Subgenre.first.questions.create(question_desc: "Who amongst the following played for SRH atleast in 1 season?", sub_genre_id: 1, is_multiple: true)
+Question.last.choices.create(option_desc: "Cameron White", question_id: 3, correct: true)
+Question.last.choices.create(option_desc: "MS Dhoni", question_id: 3, correct: false)
+Question.last.choices.create(option_desc: "Harbhajan Singh", question_id: 3, correct: false)
+Question.last.choices.create(option_desc: "Kumar Sangakkara", question_id: 3, correct: true)
+
+Subgenre.first.questions.create(question_desc: "Who is the first batsmen to score 200 runs in an ODI match", sub_genre_id: 1, is_multiple: false)
+Question.last.choices.create(option_desc: "Steven Smith", question_id: 4, correct: false)
+Question.last.choices.create(option_desc: "Sachin", question_id: 4, correct: true)
+Question.last.choices.create(option_desc: "Adam Gilchrist", question_id: 4, correct: false)
+Question.last.choices.create(option_desc: "Kapil Dev", question_id: 4, correct: false)
+
+Subgenre.first.questions.create(question_desc: "Who amongst the following players have played in ICL?", sub_genre_id: 1, is_multiple: true)
+Question.last.choices.create(option_desc: "Justin Kemp", question_id: 5, correct: true)
+Question.last.choices.create(option_desc: "MS Dhoni", question_id: 5, correct: false)
+Question.last.choices.create(option_desc: "Nicky Boje", question_id: 5, correct: true)
+Question.last.choices.create(option_desc: "Inzamamul haq", question_id: 5, correct: true)
+
+Subgenre.first.questions.create(question_desc: "Which cricketers have the record for the highest run patnership at the World Cup ?", sub_genre_id: 1, is_multiple: false)
+Question.last.choices.create(option_desc: "Sachin Tendulkar and Saurav Ganguly", question_id: 6, correct: false)
+Question.last.choices.create(option_desc: "Saurav Ganguly and Rahul Dravid", question_id: 6, correct: true)
+Question.last.choices.create(option_desc: "Saurav Ganguly and Virender Sehwag", question_id: 6, correct: false)
+Question.last.choices.create(option_desc: "Rahul Dravid and Sachin Tendulkar", question_id: 6, correct: false)
+
+Subgenre.first.questions.create(question_desc: "Against which country did India score their lowest total at the World Cup ?", sub_genre_id: 1, is_multiple: false)
+Question.last.choices.create(option_desc: "West Indies", question_id: 7, correct: false)
+Question.last.choices.create(option_desc: "England", question_id: 7, correct: false)
+Question.last.choices.create(option_desc: "New Zealand", question_id: 7, correct: false)
+Question.last.choices.create(option_desc: "Australia", question_id: 7, correct: true)
+
+
+Genre.first.subgenres.create(name: "Football", description: "Do you follow Football? Wanna showcase you talent? Yes, you should try our quiz then!", genre_id: 1)
+
+Subgenre.last.questions.create(question_desc: "When Cuco Martina scored against Arsenal this season he became the first representative of which national team to score in the Premier League?", sub_genre_id: 2, is_multiple: false)
+Question.last.choices.create(option_desc: "Dominica", question_id: 8, correct: false)
+Question.last.choices.create(option_desc: "Curaçao", question_id: 8, correct: true)
+Question.last.choices.create(option_desc: "Cape Verde", question_id: 8, correct: false)
+Question.last.choices.create(option_desc: "Burundi ", question_id: 8, correct: false)
+
+Subgenre.last.questions.create(question_desc: "All four home nations – England, Scotland, Wales and Northern Ireland – played at the 1958 World Cup. Where did it take place?", sub_genre_id: 2, is_multiple: false)
+Question.last.choices.create(option_desc: "Brazil", question_id: 9, correct: false)
+Question.last.choices.create(option_desc: "Sweden", question_id: 9, correct: true)
+Question.last.choices.create(option_desc: "France", question_id: 9, correct: false)
+Question.last.choices.create(option_desc: "Switzerland ", question_id: 9, correct: false)
+
+Subgenre.last.questions.create(question_desc: "Phileas Fogg stopped off in what is now Mumbai on his voyage around the world, but at which club in the city did Nicolas Anelka start his managerial journey?", sub_genre_id: 2, is_multiple: false)
+Question.last.choices.create(option_desc: "Bengal Mumbai FC ", question_id: 10, correct: false)
+Question.last.choices.create(option_desc: "Mumbai United", question_id: 10, correct: false)
+Question.last.choices.create(option_desc: "Mumbai City", question_id: 10, correct: true)
+Question.last.choices.create(option_desc: "Mumbai Tigers ", question_id: 10, correct: false)
+
+Subgenre.last.questions.create(question_desc: "Northern Ireland will be making their European Championship debut this summer. Who was their top scorer in qualifying?", sub_genre_id: 2, is_multiple: false)
+Question.last.choices.create(option_desc: "Jonny Evans ", question_id: 11, correct: false)
+Question.last.choices.create(option_desc: "Chris Brunt", question_id: 11, correct: false)
+Question.last.choices.create(option_desc: "Steven Davis ", question_id: 11, correct: false)
+Question.last.choices.create(option_desc: "Kyle lafferty", question_id: 11, correct: true)
+
+Subgenre.last.questions.create(question_desc: "Speaking of Northern Ireland, who were the last 2 players to score a goal for the country in a major international tournament?", sub_genre_id: 2, is_multiple: false)
+Question.last.choices.create(option_desc: "Norman Whiteside", question_id: 12, correct: false)
+Question.last.choices.create(option_desc: "Gerry Armstrong", question_id: 12, correct: false)
+Question.last.choices.create(option_desc: "Colin Clarke", question_id: 12, correct: true)
+Question.last.choices.create(option_desc: "George Best", question_id: 12, correct: true)
+
+Genre.create(name: "Movies", description: "Are you a movie lover? Yeayy! You have come to the right place! Try our quiz and prove yourself")
+Genre.last.subgenres.create(name: "Action", description: "Are you a fan of action movies? Then try our quiz and showcase your talent", genre_id: 2)
+
+Subgenre.last.questions.create(question_desc: "Who is the lead male actor in the telugu film Dhruva?", sub_genre_id: 3, is_multiple: false)
+Question.last.choices.create(option_desc: "Chiranjeevi", question_id: 13, correct: false)
+Question.last.choices.create(option_desc: "Ram Charan", question_id: 13, correct: true)
+Question.last.choices.create(option_desc: "Allu Arjun", question_id: 13, correct: false)
+Question.last.choices.create(option_desc: "Allu Sirish", question_id: 13, correct: false)
+
+Subgenre.last.questions.create(question_desc: "Who is the lead female actress in the film Winner?", sub_genre_id: 3, is_multiple: false)
+Question.last.choices.create(option_desc: "Shruthi Hasan", question_id: 14, correct: false)
+Question.last.choices.create(option_desc: "Rakul Preeth Singh", question_id: 14, correct:true)
+Question.last.choices.create(option_desc: "Kajol", question_id: 14, correct: false)
+Question.last.choices.create(option_desc: "Regina", question_id: 14, correct: false)
+
+Subgenre.last.questions.create(question_desc: "Who is the Director of Bhale Bhale mogadivoy?", sub_genre_id: 3, is_multiple: false)
+Question.last.choices.create(option_desc: "Trivikram", question_id: 15, correct: false)
+Question.last.choices.create(option_desc: "Raja Mouli", question_id: 15, correct:false)
+Question.last.choices.create(option_desc: "Maruthi", question_id: 15, correct: true)
+Question.last.choices.create(option_desc: "Puri Jagannadh", question_id: 15, correct: false)
+
+Subgenre.last.questions.create(question_desc: "Who is the producer of Bahubali", sub_genre_id: 3, is_multiple: false)
+Question.last.choices.create(option_desc: "Bandla ganesh", question_id: 16, correct: false)
+Question.last.choices.create(option_desc: "Allu Arvind", question_id: 16, correct:false)
+Question.last.choices.create(option_desc: "Raghavendra", question_id: 16, correct: false)
+Question.last.choices.create(option_desc: "Shobhu", question_id: 16, correct: true)
+
+Subgenre.last.questions.create(question_desc: "Who amongst the following actors acted in the movie Magadheera?", sub_genre_id: 3, is_multiple: true)
+Question.last.choices.create(option_desc: "Shruthi Hasan", question_id: 17, correct: false)
+Question.last.choices.create(option_desc: "Ram charan", question_id: 17, correct:true)
+Question.last.choices.create(option_desc: "Kajol", question_id: 17, correct: true)
+Question.last.choices.create(option_desc: "Brahmanandam", question_id: 17, correct: true)
+
+Subgenre.last.questions.create(question_desc: "Who are the grandsons of Rama Naidu", sub_genre_id: 3, is_multiple: true)
+Question.last.choices.create(option_desc: "Prabhas", question_id: 18, correct: false)
+Question.last.choices.create(option_desc: "Rana", question_id: 18, correct:true)
+Question.last.choices.create(option_desc: "Naga chaitanya", question_id: 18, correct: true)
+Question.last.choices.create(option_desc: "Venkatesh", question_id: 18, correct: false)
+
+
+
+Genre.last.subgenres.create(name: "Horror", description: "We have something interesting for horror movie lovers! Try our quiz and have fun", genre_id: 2)
+
+Subgenre.last.questions.create(question_desc: "Who is the lead male actor in the telugu film Chandramukhi?", sub_genre_id: 4, is_multiple: false)
+Question.last.choices.create(option_desc: "Chiranjeevi", question_id: 19, correct: false)
+Question.last.choices.create(option_desc: "Venkatesh", question_id: 19, correct: false)
+Question.last.choices.create(option_desc: "Mohan Babu", question_id: 19, correct: false)
+Question.last.choices.create(option_desc: "Rajni Kanth", question_id: 19, correct: true)
+
+
+Subgenre.last.questions.create(question_desc: "Who is the lead female actress in the film Mayuri?", sub_genre_id: 4, is_multiple: false)
+Question.last.choices.create(option_desc: "Swathi", question_id: 20, correct: false)
+Question.last.choices.create(option_desc: "Trisha", question_id: 20, correct:false)
+Question.last.choices.create(option_desc: "Naina Thaara", question_id: 20, correct: true)
+Question.last.choices.create(option_desc: "Regina", question_id: 20, correct: false)
+
+Subgenre.last.questions.create(question_desc: "Who is the producer of the horror movie Avunu?", sub_genre_id: 4, is_multiple: false)
+Question.last.choices.create(option_desc: "Raghavendra Rao", question_id: 21, correct: false)
+Question.last.choices.create(option_desc: "Nagababu", question_id: 21, correct:false)
+Question.last.choices.create(option_desc: "Suresh", question_id: 21, correct: true)
+Question.last.choices.create(option_desc: "Ganesh", question_id: 21, correct: false)
+
+Subgenre.last.questions.create(question_desc: "Who amongst the following actors did not act in the move Nagavalli?", sub_genre_id: 4, is_multiple: true)
+Question.last.choices.create(option_desc: "Venkatesh", question_id: 22, correct: false)
+Question.last.choices.create(option_desc: "Rajnikanth", question_id: 22, correct:true)
+Question.last.choices.create(option_desc: "Chiranjeevi", question_id: 22, correct: true)
+Question.last.choices.create(option_desc: "Nagarjuna", question_id: 22, correct: true)
+
+Subgenre.last.questions.create(question_desc: "When was the movie Annaballe released?", sub_genre_id: 4, is_multiple: true)
+Question.last.choices.create(option_desc: "2009-2013", question_id: 23, correct: false)
+Question.last.choices.create(option_desc: "2016-2018", question_id: 23, correct:true)
+Question.last.choices.create(option_desc: "2017-2019", question_id: 23, correct: true)
+Question.last.choices.create(option_desc: "2018-2020", question_id: 23, correct: false)
